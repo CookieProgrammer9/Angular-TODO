@@ -1,0 +1,21 @@
+<h1>Test</h1>
+
+<input type="text" [(ngModel)]=todoItem placeholder="Add new todo" (keyup.enter)=addTodo()>
+<button (click)=addTodo()>Add todo</button>
+
+<ul *ngIf="todoItems">
+<li *ngFor="let item of todoItems">{{item}} <span (click)="removeTodo(item)">&#10060;</span>  <span (click)="completeTodo(item)">&#9989;</span>  </li>
+</ul>
+
+
+<h1>Finished</h1>
+<ul *ngIf="finishedItems">
+<li *ngFor="let item of finishedItems">&#9989; {{item}}</li>
+</ul>
+
+
+<h1>Search</h1>
+<input type="text" [(ngModel)]="searchInput" (ngModelChange)="searchItem()">
+<ul *ngIf="searchOutput">
+<li *ngFor="let item of searchOutput">{{item}}</li>
+</ul>

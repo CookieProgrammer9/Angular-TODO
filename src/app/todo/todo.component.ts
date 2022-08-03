@@ -11,6 +11,7 @@ export class TodoComponent implements OnInit {
   todoItems: Array<string> = [];
   searchInput: string = '';
   searchOutput: Array<string> = [];
+  finishedItems: Array<string> = [];
 
   constructor() {}
 
@@ -18,40 +19,41 @@ export class TodoComponent implements OnInit {
     this.title = 'Todo';
   }
 
-  addTodo()
-  {
-    if (this.todoItem) 
-    {
-      //console.log("TODO is : " + todo);
+  addTodo() {
+    if (this.todoItem) {
+      console.log('TODO is : ' + this.todoItem);
       this.todoItems.push(this.todoItem);
       this.todoItem = '';
     }
   }
-  removeTodo(todo:String)
-  {
-      console.log("Removed: " + todo);
-      this.todoItems = this.todoItems.filter(item => item !== todo)
+  removeTodo(todo: String) {
+    console.log('Removed: ' + todo);
+    this.todoItems = this.todoItems.filter((item) => item !== todo);
   }
 
-  findTodo(todo: string) : string
-  { 
-    return this.todoItems.find(item => item === todo);
+  completeTodo(todo: string) {
+    console.log('Finished: ' + todo);
+    this.finishedItems.push(todo);
+    this.todoItems = this.todoItems.filter((item) => item !== todo);
   }
 
-  logMe(todo:String)
-  {
-    console.log("TODO is : " + todo)
+  findTodo(todo: string): string {
+    return this.todoItems.find((item) => item === todo);
   }
 
-  searchItem() : void
-  {
+  logMe(todo: String) {
+    console.log('TODO is : ' + todo);
+  }
+
+  searchItem(): void {
     //let temp : Array<string> = ['', ''];
 
-    this.searchOutput = this.todoItems.filter(item => item.toLocaleLowerCase().includes(this.searchInput));;
+    this.searchOutput = this.todoItems.filter((item) =>
+      item.toLocaleLowerCase().includes(this.searchInput)
+    );
 
     console.log('Temp: ' + this.searchOutput);
 
     //return temp
   }
-  
 }
