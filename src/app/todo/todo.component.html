@@ -1,23 +1,108 @@
-<h1>Test</h1>
+<div class="container">
+  <h1 class="my-4">My Todo list</h1>
 
-<input type="text" [(ngModel)]=todoItem placeholder="Add new todo" (keyup.enter)=addTodo()>
-<button (click)=addTodo()>Add todo</button>
+  <div class="row">
+    <div class="col-auto">
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="todoItem"
+        placeholder="Add new todo"
+        (keyup.enter)="addTodo()"
+      />
+    </div>
+    <div class="col-auto">
+      <button class="btn btn-primary" (click)="addTodo()">Add todo</button>
+    </div>
+  </div>
 
-<ul *ngIf="todoItems">
-<li *ngFor="let item of todoItems">{{item}} <span (click)="removeTodo(item)">&#10060;</span>  <span (click)="completeTodo(item)">&#9989;</span>  </li>
-</ul>
+  <h1 class="my-4">TODOs</h1>
 
+  <div class="row text-center my-4">
+    <div class="col-10">
+      <ul *ngIf="todoItems" class="list-group">
+        <li
+          class="
+            list-group-item
+            d-flex
+            align-items-between
+            justify-content-between
+            align-items-center
+          "
+          *ngFor="let item of todoItems"
+        >
+          <span class="pe-4">{{ item }}</span>
+          <span>
+            <span (click)="completeTodo(item)">
+              <i
+                class="
+                  bi bi-check-square bi-custom bi-hover-success
+                  color-success
+                "
+              ></i>
+            </span>
+            <span class="mx-2" (click)="removeTodo(item)"
+              ><i class="bi bi-x-square bi-custom bi-hover-danger"></i
+            ></span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<h1>Finished</h1>
-<ul *ngIf="finishedItems">
-<li *ngFor="let item of finishedItems">&#9989; {{item}}</li>
-</ul>
+  <h1 *ngIf="finishedItems">Finished</h1>
 
+  <div class="row text-center my-4">
+    <div class="col-10">
+      <ul *ngIf="finishedItems" class="list-group">
+        <li
+          class="
+            list-group-item
+            d-flex
+            align-items-between
+            justify-content-between
+            align-items-center
+            border-success
+          "
+          *ngFor="let item of finishedItems"
+        >
+          <span class="pe-4">{{ item }}</span>
+          <span> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<h1>Search</h1>
-<input type="text" [(ngModel)]="searchInput" (ngModelChange)="searchItem()">
-<ul *ngIf="searchOutput">
-<li *ngFor="let item of searchOutput">{{item}}</li>
-</ul>
-
-
+  <h1>Search</h1>
+  <div class="row">
+    <div class="col-6">
+      <input
+        type="text"
+        [(ngModel)]="searchInput"
+        (ngModelChange)="searchItem()"
+        class="form-control"
+      />
+    </div>
+  </div>
+  
+  <div class="row text-center my-4">
+    <div class="col-10">
+      <ul *ngIf="searchOutput" class="list-group">
+        <li
+          class="
+            list-group-item
+            d-flex
+            align-items-between
+            justify-content-between
+            align-items-center
+            border-primary
+          "
+          *ngFor="let item of searchOutput"
+        >
+          <span class="pe-4">{{ item }}</span>
+          <span> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

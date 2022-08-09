@@ -1,0 +1,9 @@
+.bi-custom{
+  font-size: 1.5rem;
+}
+.bi-hover-danger:hover {
+  color:var(--bs-danger) !important;
+}
+.bi-hover-success:hover {
+  color:var(--bs-success) !important;
+}
