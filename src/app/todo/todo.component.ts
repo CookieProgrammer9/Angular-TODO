@@ -34,7 +34,7 @@ export class TodoComponent implements OnInit {
 
   completeTodo(todo: string) {
     console.log('Finished: ' + todo);
-    this.finishedItems.push( { description : todo, done:false} );
+    this.finishedItems.push( { description : todo, done:true } );
 
     this.todoItems = this.todoItems.filter((item) => item.description !== todo);
   }
