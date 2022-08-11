@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-todo',
@@ -8,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class TodoComponent implements OnInit {
   title: string;
   todoItem: string = '';
-  todoItems: Array<string> = [];
+  todoItems: Array<Item> = [];
   searchInput: string = '';
-  searchOutput: Array<string> = [];
-  finishedItems: Array<string> = [];
+  searchOutput: Array<Item> = [];
+  finishedItems: Array<Item> = [];
 
   constructor() {}
 
@@ -22,23 +23,24 @@ export class TodoComponent implements OnInit {
   addTodo() {
     if (this.todoItem) {
       console.log('TODO is : ' + this.todoItem);
-      this.todoItems.push(this.todoItem);
+      this.todoItems.push( { description: this.todoItem, done:false });
       this.todoItem = '';
     }
   }
   removeTodo(todo: String) {
     console.log('Removed: ' + todo);
-    this.todoItems = this.todoItems.filter((item) => item !== todo);
+    this.todoItems = this.todoItems.filter((item) => item.description !== todo);
   }
 
   completeTodo(todo: string) {
     console.log('Finished: ' + todo);
-    this.finishedItems.push(todo);
-    this.todoItems = this.todoItems.filter((item) => item !== todo);
+    this.finishedItems.push( { description : todo, done:false} );
+
+    this.todoItems = this.todoItems.filter((item) => item.description !== todo);
   }
 
-  findTodo(todo: string): string {
-    return this.todoItems.find((item) => item === todo);
+  findTodo(todo: string): Item {
+    return this.todoItems.find((item) => item.description === todo);
   }
 
   logMe(todo: String) {
@@ -49,7 +51,7 @@ export class TodoComponent implements OnInit {
     //let temp : Array<string> = ['', ''];
 
     this.searchOutput = this.todoItems.filter((item) =>
-      item.toLocaleLowerCase().includes(this.searchInput)
+      item.description.toLocaleLowerCase().includes(this.searchInput)
     );
 
     console.log('Temp: ' + this.searchOutput);

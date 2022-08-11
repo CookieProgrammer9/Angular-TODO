@@ -31,9 +31,9 @@
           "
           *ngFor="let item of todoItems"
         >
-          <span class="pe-4">{{ item }}</span>
+          <span class="pe-4">{{ item.description }}</span>
           <span>
-            <span (click)="completeTodo(item)">
+            <span (click)="completeTodo(item.description)">
               <i
                 class="
                   bi bi-check-square bi-custom bi-hover-success
@@ -41,7 +41,7 @@
                 "
               ></i>
             </span>
-            <span class="mx-2" (click)="removeTodo(item)"
+            <span class="mx-2" (click)="removeTodo(item.description)"
               ><i class="bi bi-x-square bi-custom bi-hover-danger"></i
             ></span>
           </span>
@@ -66,7 +66,7 @@
           "
           *ngFor="let item of finishedItems"
         >
-          <span class="pe-4">{{ item }}</span>
+          <span class="pe-4">{{ item.description }}</span>
           <span> </span>
         </li>
       </ul>
@@ -99,7 +99,7 @@
           "
           *ngFor="let item of searchOutput"
         >
-          <span class="pe-4">{{ item }}</span>
+          <span class="pe-4">{{ item.description }}</span>
           <span> </span>
         </li>
       </ul>
