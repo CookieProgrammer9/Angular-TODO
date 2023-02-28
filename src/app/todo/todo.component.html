@@ -67,7 +67,11 @@
           *ngFor="let item of finishedItems"
         >
           <span class="pe-4">{{ item.description }}</span>
-          <span> </span>
+          <span>
+          <span class="mx-2" (click)="CompletelyRemoveTodo(item.description)"
+            ><i class="bi bi-x-square bi-custom bi-hover-danger"></i
+          ></span>
+        </span>
         </li>
       </ul>
     </div>

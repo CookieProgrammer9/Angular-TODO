@@ -32,6 +32,11 @@ export class TodoComponent implements OnInit {
     this.todoItems = this.todoItems.filter((item) => item.description !== todo);
   }
 
+  CompletelyRemoveTodo(todo: String) {
+    console.log('Removed: ' + todo);
+    this.finishedItems = this.finishedItems.filter((item) => item.description !== todo);
+  }
+
   completeTodo(todo: string) {
     console.log('Finished: ' + todo);
     this.finishedItems.push( { description : todo, done:true } );
